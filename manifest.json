@@ -1,0 +1,99 @@
+{
+    "name": "Quản Lý Tài Chính Cá Nhân",
+    "short_name": "Tài Chính",
+    "description": "Ứng dụng quản lý tài chính với tính toán tự động cho thẻ tín dụng, vay tín chấp, thế chấp và thấu chi",
+    "version": "1.0.0",
+    "start_url": "/",
+    "scope": "/",
+    "display": "standalone",
+    "orientation": "portrait-primary",
+    "theme_color": "#3b82f6",
+    "background_color": "#ffffff",
+    "lang": "vi",
+    "dir": "ltr",
+
+    "icons": [
+        {
+            "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E💰%3C/text%3E%3C/svg%3E",
+            "sizes": "192x192",
+            "type": "image/svg+xml",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E💰%3C/text%3E%3C/svg%3E",
+            "sizes": "512x512",
+            "type": "image/svg+xml",
+            "purpose": "any maskable"
+        }
+    ],
+
+    "screenshots": [
+        {
+            "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1280' height='720' viewBox='0 0 1280 720'%3E%3Crect width='1280' height='720' fill='%23f5f7fa'/%3E%3Ctext x='640' y='360' text-anchor='middle' font-size='48' fill='%233b82f6'%3EQuản Lý Tài Chính%3C/text%3E%3C/svg%3E",
+            "sizes": "1280x720",
+            "type": "image/svg+xml",
+            "form_factor": "wide",
+            "label": "Dashboard tổng quan"
+        },
+        {
+            "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='750' height='1334' viewBox='0 0 750 1334'%3E%3Crect width='750' height='1334' fill='%23f5f7fa'/%3E%3Ctext x='375' y='667' text-anchor='middle' font-size='36' fill='%233b82f6'%3ETài Chính Mobile%3C/text%3E%3C/svg%3E",
+            "sizes": "750x1334",
+            "type": "image/svg+xml",
+            "form_factor": "narrow",
+            "label": "Giao diện mobile"
+        }
+    ],
+
+    "categories": ["finance", "productivity", "business"],
+
+    "shortcuts": [
+        {
+            "name": "Dashboard",
+            "short_name": "Dashboard",
+            "description": "Xem tổng quan tài chính",
+            "url": "/?shortcut=dashboard",
+            "icons": [
+                {
+                    "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🏠%3C/text%3E%3C/svg%3E",
+                    "sizes": "96x96"
+                }
+            ]
+        },
+        {
+            "name": "Thêm Vay",
+            "short_name": "Thêm Vay",
+            "description": "Thêm khoản vay mới",
+            "url": "/?shortcut=add-loan",
+            "icons": [
+                {
+                    "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E➕%3C/text%3E%3C/svg%3E",
+                    "sizes": "96x96"
+                }
+            ]
+        },
+        {
+            "name": "Lịch Trả Nợ",
+            "short_name": "Lịch Nợ",
+            "description": "Xem lịch trả nợ",
+            "url": "/?shortcut=schedule",
+            "icons": [
+                {
+                    "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📅%3C/text%3E%3C/svg%3E",
+                    "sizes": "96x96"
+                }
+            ]
+        }
+    ],
+
+    "related_applications": [],
+
+    "prefer_related_applications": false,
+
+    "edge_side_panel": {
+        "preferred_width": 400
+    },
+
+    "protocol_handlers": [],
+
+    "file_handlers": []
+}
