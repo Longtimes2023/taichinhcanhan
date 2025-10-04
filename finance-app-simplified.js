@@ -1,4 +1,4 @@
-// Ứng dụng Quản Lý Tài Chính Cá Nhân - Fixed Warning Logic
+// Ứng dụng Quản Lý Tài Chính Cá Nhân - Enhanced Dashboard với Biểu Đồ
 class FinanceManager {
     constructor() {
         this.data = {
@@ -14,6 +14,28 @@ class FinanceManager {
                     createdDate: "2024-01-15",
                     closingDate: "15",
                     hotline: "1900545413"
+                },
+                {
+                    id: 2,
+                    bankName: "BIDV",
+                    cardNumber: "****5678",
+                    cardType: "Mastercard Platinum",
+                    creditLimit: 80000000,
+                    currentSpending: 45000000,
+                    createdDate: "2024-03-20",
+                    closingDate: "20",
+                    hotline: "1900585858"
+                },
+                {
+                    id: 3,
+                    bankName: "Techcombank",
+                    cardNumber: "****9012",
+                    cardType: "Visa Signature",
+                    creditLimit: 100000000,
+                    currentSpending: 95000000,
+                    createdDate: "2024-05-10",
+                    closingDate: "10",
+                    hotline: "1800588822"
                 }
             ],
 
@@ -30,33 +52,5 @@ class FinanceManager {
                     paymentDay: 15,
                     remainingAmount: 20000000,
                     currentMonth: 8
-                }
-            ],
-
-            // Vay tín chấp mẫu
-            personalLoans: [
+                },
                 {
-                    id: 1,
-                    bankName: "BIDV", 
-                    loanAmount: 100000000,
-                    termMonths: 36,
-                    interestRate: 12.5,
-                    startDate: "2024-01-01",
-                    purpose: "Kinh doanh",
-                    paymentDay: 5,
-                    remainingBalance: 75000000,
-                    paymentType: "decreasing",
-                    currentMonth: 10
-                }
-            ],
-
-            // Vay thế chấp mẫu
-            mortgageLoans: [
-                {
-                    id: 1,
-                    bankName: "Vietcombank",
-                    loanAmount: 800000000,
-                    termMonths: 240,
-                    interestRate: 8.5,
-                    startDate: "2023-06
-Asset 3 of 3
