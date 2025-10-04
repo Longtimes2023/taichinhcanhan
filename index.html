@@ -21,246 +21,34 @@
 
     <!-- Font Awesome for icons (optional) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div class="header-content">
-            <div class="header-left">
-                <h1 class="app-title">💰 Quản Lý Tài Chính</h1>
-            </div>
-            <div class="header-right">
-                <span id="current-date" class="current-date"></span>
-                <button id="menu-toggle" class="menu-toggle" aria-label="Toggle menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
+    <!-- Mobile Menu Toggle -->
+    <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2>📊 Menu</h2>
         </div>
-    </header>
-
-    <!-- Main Layout -->
-    <div class="app-layout">
-        <!-- Sidebar Navigation -->
-        <nav class="sidebar" id="sidebar">
-            <div class="sidebar-header">
-                <h2 class="sidebar-title">📊 Menu</h2>
-            </div>
-
-            <ul class="sidebar-menu">
-                <li>
-                    <a href="#" class="menu-item active" data-section="dashboard">
-                        <span class="menu-icon">🏠</span>
-                        <span class="menu-text">Dashboard</span>
-                    </a>
-                </li>
-
-                <li class="menu-category">
-                    <span class="category-title">💳 Thẻ Tín Dụng</span>
-                </li>
-                <li>
-                    <a href="#" class="menu-item" data-section="credit-cards">
-                        <span class="menu-icon">💳</span>
-                        <span class="menu-text">Quản Lý Thẻ</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="menu-item" data-section="installments">
-                        <span class="menu-icon">🛍️</span>
-                        <span class="menu-text">Trả Góp</span>
-                    </a>
-                </li>
-
-                <li class="menu-category">
-                    <span class="category-title">🏦 Các Khoản Vay</span>
-                </li>
-                <li>
-                    <a href="#" class="menu-item" data-section="personal-loans">
-                        <span class="menu-icon">💼</span>
-                        <span class="menu-text">Vay Tín Chấp</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="menu-item" data-section="mortgage-loans">
-                        <span class="menu-icon">🏠</span>
-                        <span class="menu-text">Vay Thế Chấp</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="menu-item" data-section="overdrafts">
-                        <span class="menu-icon">🏦</span>
-                        <span class="menu-text">Thấu Chi</span>
-                    </a>
-                </li>
-
-                <li class="menu-category">
-                    <span class="category-title">📊 Báo Cáo</span>
-                </li>
-                <li>
-                    <a href="#" class="menu-item" data-section="payment-schedule">
-                        <span class="menu-icon">📅</span>
-                        <span class="menu-text">Lịch Trả Nợ</span>
-                    </a>
-                </li>
-            </ul>
-
-            <!-- Sidebar Footer -->
-            <div class="sidebar-footer">
-                <div class="app-version">
-                    <small>Version 1.0.0</small>
-                </div>
-            </div>
-        </nav>
-
-        <!-- Main Content -->
-        <main class="main-content">
-            <!-- Content Header -->
-            <div class="content-header">
-                <div class="content-title">
-                    <h2 id="page-title">Dashboard Tổng Quan</h2>
-                </div>
-                <div class="content-actions">
-                    <button id="add-btn" class="btn btn--primary" style="display: none;">
-                        <span class="btn-icon">➕</span>
-                        <span class="btn-text">Thêm Mới</span>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Dynamic Content -->
-            <div id="main-content" class="page-content">
-                <!-- Content will be loaded here dynamically -->
-                <div class="loading-placeholder">
-                    <div class="loading-spinner"></div>
-                    <p>Đang tải...</p>
-                </div>
-            </div>
-        </main>
-    </div>
-
-    <!-- Overlay for mobile menu -->
-    <div class="overlay" id="overlay"></div>
-
-    <!-- Toast Notifications -->
-    <div id="toast-container" class="toast-container"></div>
-
-    <!-- Loading Screen -->
-    <div id="loading-screen" class="loading-screen">
-        <div class="loading-content">
-            <div class="loading-logo">💰</div>
-            <h2>Quản Lý Tài Chính</h2>
-            <div class="loading-spinner"></div>
-            <p>Đang khởi tạo ứng dụng...</p>
-        </div>
-    </div>
-
-    <!-- PWA Install Prompt -->
-    <div id="pwa-prompt" class="pwa-prompt" style="display: none;">
-        <div class="pwa-content">
-            <div class="pwa-icon">📱</div>
-            <div class="pwa-text">
-                <h3>Cài đặt ứng dụng</h3>
-                <p>Thêm vào màn hình chính để truy cập nhanh</p>
-            </div>
-            <div class="pwa-actions">
-                <button id="pwa-install" class="btn btn--primary btn--sm">Cài đặt</button>
-                <button id="pwa-dismiss" class="btn btn--secondary btn--sm">Bỏ qua</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Scripts -->
-    <script src="finance-app-simplified.js"></script>
-    <script src="pwa-install.js"></script>
-    <script>
-        // Initialize app after DOM is loaded
-        document.addEventListener('DOMContentLoaded', function() {
-            // Update current date
-            const currentDate = new Date().toLocaleDateString('vi-VN', {
-                weekday: 'long',
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-            });
-            document.getElementById('current-date').textContent = currentDate;
-
-            // Mobile menu toggle
-            const menuToggle = document.getElementById('menu-toggle');
-            const sidebar = document.getElementById('sidebar');
-            const overlay = document.getElementById('overlay');
-
-            menuToggle.addEventListener('click', function() {
-                sidebar.classList.toggle('active');
-                overlay.classList.toggle('active');
-            });
-
-            overlay.addEventListener('click', function() {
-                sidebar.classList.remove('active');
-                overlay.classList.remove('active');
-            });
-
-            // Hide loading screen
-            setTimeout(function() {
-                document.getElementById('loading-screen').style.display = 'none';
-            }, 1500);
-
-            // Initialize finance manager
-            if (typeof financeManager === 'undefined') {
-                window.financeManager = new FinanceManager();
-            }
-        });
-
-        // Register service worker for PWA
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', function() {
-                navigator.serviceWorker.register('sw.js')
-                    .then(function(registration) {
-                        console.log('SW registered: ', registration);
-                    })
-                    .catch(function(registrationError) {
-                        console.log('SW registration failed: ', registrationError);
-                    });
-            });
-        }
-
-        // Toast notification function
-        function showToast(message, type = 'info') {
-            const container = document.getElementById('toast-container');
-            const toast = document.createElement('div');
-            toast.className = `toast toast--${type}`;
-            toast.innerHTML = `
-                <div class="toast-content">
-                    <span class="toast-icon">${type === 'success' ? '✅' : type === 'error' ? '❌' : 'ℹ️'}</span>
-                    <span class="toast-message">${message}</span>
-                </div>
-                <button class="toast-close" onclick="this.parentElement.remove()">×</button>
-            `;
-
-            container.appendChild(toast);
-
-            // Auto remove after 5 seconds
-            setTimeout(() => {
-                if (toast.parentElement) {
-                    toast.remove();
-                }
-            }, 5000);
-        }
-
-        // Global error handler
-        window.addEventListener('error', function(e) {
-            console.error('App Error:', e.error);
-            showToast('Đã xảy ra lỗi, vui lòng thử lại!', 'error');
-        });
-
-        // Offline/Online status
-        window.addEventListener('online', function() {
-            showToast('Kết nối internet đã được khôi phục', 'success');
-        });
-
-        window.addEventListener('offline', function() {
-            showToast('Mất kết nối internet - chế độ offline', 'info');
-        });
-    </script>
-</body>
-</html>
+        
+        <ul class="sidebar-menu">
+            <li>
+                <a href="#dashboard" onclick="showSection('dashboard')" class="menu-item active">
+                    <i class="fas fa-home"></i>
+                    Dashboard
+                </a>
+            </li>
+            <li>
+                <a href="#credit-cards" onclick="showSection('credit-cards')" class="menu-item">
+                    <i class="fas fa-credit-card"></i>
+                    💳 Thẻ Tín Dụng
+                </a>
+                <ul class="submenu">
+   
