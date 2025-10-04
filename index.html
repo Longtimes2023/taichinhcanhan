@@ -18,15 +18,17 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="dashboard-enhanced.css">
 
-    <!-- Font Awesome for icons (optional) -->
+    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <!-- Chart.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <!-- Mobile Menu Toggle -->
-    <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+    <button class="mobile-menu-toggle" onclick="document.getElementById('sidebar').classList.toggle('active')">
         <span></span>
         <span></span>
         <span></span>
@@ -40,15 +42,200 @@
         
         <ul class="sidebar-menu">
             <li>
-                <a href="#dashboard" onclick="showSection('dashboard')" class="menu-item active">
+                <a href="#dashboard" class="menu-item active">
                     <i class="fas fa-home"></i>
                     Dashboard
                 </a>
             </li>
             <li>
-                <a href="#credit-cards" onclick="showSection('credit-cards')" class="menu-item">
+                <a href="#credit-cards" class="menu-item">
                     <i class="fas fa-credit-card"></i>
                     💳 Thẻ Tín Dụng
                 </a>
                 <ul class="submenu">
-   
+                    <li><a href="#credit-management" class="menu-item">Quản Lý Thẻ</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#installment" class="menu-item">
+                    <i class="fas fa-shopping-cart"></i>
+                    🛍️ Trả Góp
+                </a>
+            </li>
+            <li>
+                <a href="#loans" class="menu-item">
+                    <i class="fas fa-university"></i>
+                    🏦 Các Khoản Vay
+                </a>
+                <ul class="submenu">
+                    <li><a href="#unsecured-loans" class="menu-item">Vay Tín Chấp</a></li>
+                    <li><a href="#secured-loans" class="menu-item">Vay Thế Chấp</a></li>
+                    <li><a href="#overdraft" class="menu-item">Thấu Chi</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#reports" class="menu-item">
+                    <i class="fas fa-chart-bar"></i>
+                    📊 Báo Cáo
+                </a>
+                <ul class="submenu">
+                    <li><a href="#payment-schedule" class="menu-item">Lịch Trả Nợ</a></li>
+                </ul>
+            </li>
+        </ul>
+        
+        <div class="sidebar-footer">
+            <p>Version 1.0.0</p>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content" id="main-content">
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="content-section active">
+            <div class="section-header">
+                <h1>Dashboard Tổng Quan</h1>
+                <div class="header-actions">
+                    <button class="btn btn-primary" onclick="alert('Tính năng thêm mới')">
+                        <i class="fas fa-plus"></i>
+                        Thêm Mới
+                    </button>
+                </div>
+            </div>
+            
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <div class="stat-content">
+                        <div class="stat-icon">💳</div>
+                        <div class="stat-info">
+                            <h3 id="total-credit">Đang tải...</h3>
+                            <p>Tổng Hạn Mức Thẻ</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-content">
+                        <div class="stat-icon">💰</div>
+                        <div class="stat-info">
+                            <h3 id="total-debt">Đang tải...</h3>
+                            <p>Tổng Nợ Hiện Tại</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-content">
+                        <div class="stat-icon">📈</div>
+                        <div class="stat-info">
+                            <h3 id="available-credit">Đang tải...</h3>
+                            <p>Hạn Mức Khả Dụng</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-content">
+                        <div class="stat-icon">⚡</div>
+                        <div class="stat-info">
+                            <h3 id="credit-utilization">Đang tải...</h3>
+                            <p>Tỷ Lệ Sử Dụng</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="dashboard-charts">
+                <div class="chart-container">
+                    <canvas id="creditUtilizationChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="paymentScheduleChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="recent-activity">
+                <h2>Hoạt Động Gần Đây</h2>
+                <div class="activity-list" id="recent-activity-list">
+                    <!-- Activity items will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Other sections -->
+        <section id="credit-cards" class="content-section">
+            <div class="section-header">
+                <h1>Quản Lý Thẻ Tín Dụng</h1>
+            </div>
+            <div class="placeholder">
+                <p>Chức năng đang được phát triển...</p>
+            </div>
+        </section>
+
+        <section id="installment" class="content-section">
+            <div class="section-header">
+                <h1>Quản Lý Trả Góp</h1>
+            </div>
+            <div class="placeholder">
+                <p>Tính năng đang được phát triển...</p>
+            </div>
+        </section>
+
+        <section id="loans" class="content-section">
+            <div class="section-header">
+                <h1>Quản Lý Các Khoản Vay</h1>
+            </div>
+            <div class="placeholder">
+                <p>Tính năng đang được phát triển...</p>
+            </div>
+        </section>
+
+        <section id="reports" class="content-section">
+            <div class="section-header">
+                <h1>Báo Cáo Tài Chính</h1>
+            </div>
+            <div class="placeholder">
+                <p>Tính năng đang được phát triển...</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <h3>Quản Lý Tài Chính</h3>
+            <p>Đang khởi tạo ứng dụng...</p>
+        </div>
+    </div>
+
+    <!-- PWA Install Prompt -->
+    <div class="pwa-install-prompt" id="pwa-install-prompt">
+        <div class="pwa-content">
+            <h3>Cài đặt ứng dụng</h3>
+            <p>Thêm vào màn hình chính để truy cập nhanh</p>
+            <div class="pwa-actions">
+                <button class="btn btn-primary" id="install-button">Cài đặt</button>
+                <button class="btn btn-secondary" id="dismiss-button">Bỏ qua</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="finance-app-fixed.js"></script>
+    <script src="pwa-install.js"></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js')
+                .then(function(registration) {
+                    console.log('Service Worker registered successfully:', registration.scope);
+                })
+                .catch(function(error) {
+                    console.log('Service Worker registration failed:', error);
+                });
+        }
+    </script>
+</body>
+</html>
